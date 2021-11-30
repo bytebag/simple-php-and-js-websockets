@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="websocket.js"></script>
+</head>
+
+<body>
+    <h2>Last message from server</h2>
+    <div style="font-size: 3em" id="root"></div>
+
+    <br><a href="#" id="connect">connect</a><br>
+    <br><a href="#" id="send">send</a><br>
+    <br><a href="#" id="ask">ask</a><br>
+    <br><a href="#" id="close">close</a><br>
+    <script>
+        // Create a variable in this scope so we can access it in the anon fns below
+        var ws = {};
+
+        // Various actions, none should give an fatal error or leave the connection in a state
+        // that requires a reload or server reset. So, do anything in any order :)
+
+        // Connect
+        $('#connect').on('click', function () {
+            console.log('connect clicked');
+            ws = get_ws(function (m) {
+                console.log('Got:' + m);
+                document.getElementById('root').innerHTML = m;
+            });
+        });
+
+        // Send a single line of text
+        $('#send').on('click', function () {
+            console.log('send clicked');
+            ws.send('Hello from js');
+        });
+
+        // Ask the server to send something back
+        $('#ask').on('click', function () {
+            console.log('ask clicked');
+            ws.send('ask from js');
+        });
+
+        // Close the connection
+        $('#close').on('click', function () {
+            console.log('close clicked');
+            ws.close();
+        });
+
+    </script>
+</body>
+</html>
