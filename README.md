@@ -11,4 +11,7 @@ calling that script and showing the results. The links shown are connect, send, 
 to the server side. ask sends a different line of text which prompts the test server to send a message back, which is then shown.
 The test reply includes a random number from the server php, so you can see its working.
 
+Some of the code snippets was taken from elsewhere, all open source I belive. The rest is just what I put together for my own
+project. 
+
 Hope it helps someone!
