@@ -2,7 +2,6 @@
 
 
 /**
- * Undocumented function
  * Is the last socket error likely to mean the socket has closed.
  *
  * WARNING the hard coded value(s) here might be OS specific.
