@@ -39,24 +39,3 @@ function get_ws(message_handler) {
     }
     return websock;
 }
-
-var ws = {};
-$('#connect').on('click', function () {
-    console.log('connect clicked');
-    ws = get_ws(function (m) {
-        console.log('Got:' + m);
-        document.getElementById('root').innerHTML = m;
-    });
-});
-$('#send').on('click', function () {
-    console.log('send clicked');
-    ws.send('Hello from js');
-});
-$('#ask').on('click', function () {
-    console.log('ask clicked');
-    ws.send('ask from js');
-});
-$('#close').on('click', function () {
-    console.log('close clicked');
-    ws.close();
-});
