@@ -169,6 +169,10 @@ function change_to_websocket($client)
  */
 function ws_write($handle, $msg)
 {
+    if (empty($handle['client'])) {
+        return;
+    }
+    
     $a = str_split($msg, 125);
     if (count($a) == 1) {
         $data = "\x81" . chr(strlen($a[0])) . $a[0];
