@@ -1,7 +1,7 @@
 function get_ws(message_handler) {
     var websock = {};
     websock.open = false;
-    websock.host = 'ws://0.0.0.0:12345/websockets.php';
+    websock.host = 'ws://0.0.0.0:12345';
     console.log('Opening ws connection');
     websock.socket = new WebSocket(websock.host);
 
