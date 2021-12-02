@@ -8,10 +8,10 @@
  * If you are getting sockets left open on the server when the client has closed,
  * or the server closing the socket when it should not, disable the temp errors here,
  * enable debugging and see what the codes are when the client disconnects ($e variable).
- * Then add code to detect the OS and select the right codes. 
+ * Then add code to detect the OS and select the right codes.
  * The 11 is correct on:
  * Linux 4.19.0-17-amd64 #1 SMP Debian 4.19.194-2 (2021-06-21) x86_64 GNU/Linux
- * 
+ *
  * @param [type] $handle
  * @return void
  */
@@ -43,16 +43,25 @@ function ws_read($handle)
         $header = socket_read($handle['client'], 2);
         if ($header === false) {
             if (perm_error($handle)) {
+                if ($handle['debug']) {
+                    echo "Perm error received\n";
+                }
                 return false;
             } else {
+                if ($handle['debug']) {
+                    echo "Non perm error received\n";
+                }
                 return "";
             }
         }
-        
+
         if (strlen($header)<2) {
+            if ($handle['debug']) {
+                echo "Header recieved which is less than 2 chars - ignoring\n";
+            }
             return "";
         }
-        
+
         $opcode = ord($header[0]) & 0x0F;
         $final = ord($header[0]) & 0x80;
         $masked = ord($header[1]) & 0x80;
@@ -119,7 +128,7 @@ function ws_read($handle)
             $header[0] = chr(($final ? 0x80 : 0) | 0x0A); // 0x0A Pong
             socket_write($handle['client'], $header . $ext . $mask . $frame_data);
 
-            // Recieve and unmask data
+        // Recieve and unmask data
         } elseif ($opcode < 3) {
             $data = "";
             $data_len = strlen($frame_data);
@@ -230,7 +239,7 @@ function ws_poll(&$handle)
 
     if ($handle['client'] == null) {
         if ($handle['debug']) {
-            echo "Not connected ";
+            echo "unconnected ";
         }
         if (empty($handle['server'])) {
             return '';
@@ -251,7 +260,7 @@ function ws_poll(&$handle)
 
     if ($handle['client'] != null) {
         if ($handle['debug']) {
-            echo "Connected\n";
+            echo "is connected \n";
         }
         $read = ws_read($handle);
         if ($read === false) {
