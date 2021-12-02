@@ -48,6 +48,11 @@ function ws_read($handle)
                 return "";
             }
         }
+        
+        if (strlen($header)<2) {
+            return "";
+        }
+        
         $opcode = ord($header[0]) & 0x0F;
         $final = ord($header[0]) & 0x80;
         $masked = ord($header[1]) & 0x80;
