@@ -17,7 +17,6 @@ project.
 Hope it helps someone!
 
 TODO
-- Remove hard coded port from websocket.js
 - Remove all the console.logs
 - Possibly make it possible to select which interface to bind to
 - Tidy up commented out debugging code
