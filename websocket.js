@@ -1,8 +1,8 @@
-function get_ws(message_handler) {
+function get_ws(host,port,message_handler) {
     var websock = {};
     websock.open = false;
-    websock.host = 'ws://0.0.0.0:12345';
-    console.log('Opening ws connection');
+    websock.host = 'ws://'+host+':'+port;
+    console.log('Opening ws connection: '+websock.host);
     websock.socket = new WebSocket(websock.host);
 
     websock.socket.onmessage = function (e) {

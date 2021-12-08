@@ -24,7 +24,7 @@
         // Connect
         $('#connect').on('click', function () {
             console.log('connect clicked');
-            ws = get_ws(function (m) {
+            ws = get_ws('0.0.0.0',1234,function (m) {
                 console.log('Got:' + m);
                 document.getElementById('root').innerHTML = m;
             });
