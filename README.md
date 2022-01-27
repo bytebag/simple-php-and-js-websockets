@@ -1,12 +1,12 @@
 # simple-php-and-js-websockets
-A implementation of websockets using php and js. The php is server side, and the js is client.
+An implementation of websockets using php and js. The php is server side, and the js is client.
 
-Nothing fancy, no dependancies (except the test html pages uses a jquery cdn - does that count as a dependancy?!) 
+Nothing fancy, there are no dependancies you need to install.
 
-Some snippets of code was taken from elsewhere, all open source I belive. The rest is just what I put together for my own
+Some snippets of code have been taken from elsewhere, but all are open source I belive. The rest is just what I put together for my own
 project. 
 
-Hope it helps someone!
+Seems to work for my project, hope it helps someone else too!
 
 # To use
 ## Client side: js example
