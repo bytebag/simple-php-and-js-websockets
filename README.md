@@ -69,5 +69,5 @@ The test scripts included show both sides of the websocket working with two way 
 
 # TODO
 - Remove all the console.logs
-- Possibly make it possible to select which interface the server binds to
+- Maybe make it possible to select which interface the server binds to
 - Tidy up commented out debugging code
